@@ -31,25 +31,44 @@ RadHanyu is a zero-friction, ambient desktop widget designed to help you absorb 
 
 ## 🚀 Getting Started
 
-### Prerequisites
+### Option 1: Standalone Windows App (Recommended for Users)
+No Node.js or terminal required:
+1. Download **`radhanyu Setup 1.0.0.exe`** from [Releases](https://github.com/juleohermanto/RadHanyu/releases).
+2. Run the Setup Wizard to install the application.
+3. Launch RadHanyu directly from your Desktop or Start Menu!
+
+---
+
+### Option 2: Running from Source (For Developers)
+
+#### Prerequisites
 - [Node.js](https://nodejs.org/) (v18 or newer recommended)
 - Windows 10 / 11 (tested with native speech synthesis)
 
-### Installation & Launch
+#### Installation & Launch
 
 ```bash
-# 1. Clone the repository (or download and extract the ZIP)
+# 1. Clone the repository
 git clone https://github.com/juleohermanto/RadHanyu.git
 cd RadHanyu
 
 # 2. Install dependencies (Electron)
 npm install
 
-# 3. Launch the widget
+# 3. Launch in development mode
 npm start
 ```
 
-> **Note for Offline Distribution**: Once `npm install` has been run (or if distributed as a packaged build), RadHanyu runs **100% offline** without needing any active internet connection or external services.
+#### Build Independent Setup Wizard (`.exe`)
+
+To package a standalone Windows installer yourself without altering code:
+
+```bash
+npx --yes electron-builder --win nsis
+```
+The resulting installer will be located in the `dist/` directory: `dist/radhanyu Setup 1.0.0.exe`.
+
+> **Note for Offline Distribution**: RadHanyu operates **100% offline** without needing any active internet connection or external services. Both the developer build and standalone installer make zero remote calls.
 
 
 ---
