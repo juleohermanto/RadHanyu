@@ -34,7 +34,3 @@ desktop.ini
 *.sln
 *.sw?
 
-# AI / Planning
-task.md
-!agent.md
-!AGENTS.md
