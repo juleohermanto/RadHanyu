@@ -1,0 +1,21 @@
+{
+  "name": "radhanyu",
+  "version": "1.0.0",
+  "description": "Minimalist, ambient desktop widget for passive Chinese language acquisition",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "keywords": [
+    "chinese",
+    "hsk",
+    "desktop-widget",
+    "language-learning",
+    "electron"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^33.2.1"
+  }
+}

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RadHanyu</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="widget-container" class="widget-pill">
+    
+    <div class="drag-region">
+      <div class="header-left">
+        <span class="drag-handle" title="Drag widget">•••</span>
+        <div class="secondary-controls">
+          <select id="level-select" class="level-dropdown" title="HSK Level Filter">
+            <option value="ALL">HSK 4-6</option>
+            <option value="HSK 4" selected>HSK 4</option>
+            <option value="HSK 5">HSK 5</option>
+            <option value="HSK 6">HSK 6</option>
+          </select>
+          <select id="cadence-select" class="cadence-dropdown" title="Rotation interval">
+            <option value="60000">1m</option>
+            <option value="300000">5m</option>
+            <option value="600000">10m</option>
+            <option value="1800000">30m</option>
+            <option value="3600000" selected>1h</option>
+            <option value="14400000">4h</option>
+            <option value="86400000">24h</option>
+          </select>
+          
+          <div id="theme-switch" class="theme-switch-pill" title="Switch Theme (Dark / Light)">
+            <div class="theme-switch-slider"></div>
+            <span class="theme-icon left">🌙</span>
+            <span class="theme-icon right">☀️</span>
+          </div>
+          <button id="pin-btn" class="icon-btn" title="Toggle Lock / Always on Top">📌</button>
+        </div>
+      </div>
+      <div class="header-right">
+        <button id="close-btn" class="icon-btn close-action" title="Close">×</button>
+      </div>
+    </div>
+
+    
+    <div id="idle-view" class="view-content">
+      <div class="glyph-container">
+        <h1 id="hanzi-glyph" class="hanzi">...</h1>
+        <div class="phonetics">
+          <span id="pinyin-text" class="pinyin">...</span>
+          <button id="audio-btn" class="speak-btn" title="Pronounce">🔊</button>
+        </div>
+      </div>
+    </div>
+
+    
+    <div id="expanded-view" class="view-content hidden">
+      <div class="divider"></div>
+
+      <div class="expanded-columns">
+        
+        <div class="col-left">
+          <div class="meta-row">
+            <span id="pos-tag" class="pos-badge">Verb</span>
+            <span id="definition-text" class="definition">To rest, cease, stop.</span>
+          </div>
+
+          <div class="radicals-container">
+            <div class="section-label">Radical Breakdown</div>
+            <div id="radicals-list" class="radicals-chips"></div>
+            <div id="mnemonic-text" class="mnemonic"></div>
+          </div>
+        </div>
+
+        
+        <div class="col-right">
+          <div class="context-container">
+            <div class="section-label">Context Sentence</div>
+            <div id="example-zh" class="sentence-zh">工作太累了，你需要好好休息一下。</div>
+            <div id="example-pinyin" class="sentence-pinyin">Gōngzuò tài lèi le, nǐ xūyào hǎohǎo xiūxi yíxià.</div>
+            <div id="example-en" class="sentence-en">Work is too tiring, you need to take a good rest.</div>
+          </div>
+
+          <div class="footer-row">
+            <button id="prev-word-btn" class="nav-btn prev-btn" title="Go to previous word">← Prev</button>
+            <button id="next-word-btn" class="nav-btn next-btn" title="Next random word">Next →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="scheduler.js"></script>
+  <script src="renderer.js"></script>
+</body>
+</html>
