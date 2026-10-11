@@ -5,6 +5,8 @@ class CadenceScheduler {
     this.currentIndex = 0;
     this.storageKeyIndex = 'radhanyu_current_index';
     this.storageKeyLevel = 'radhanyu_level_filter';
+    this.storageKeyCadence = 'radhanyu_cadence';
+    this.storageKeyTimestamp = 'radhanyu_timestamp';
     this.currentLevel = localStorage.getItem(this.storageKeyLevel) || 'HSK 4';
     this.applyFilter();
 

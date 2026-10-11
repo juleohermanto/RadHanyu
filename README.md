@@ -37,9 +37,10 @@ RadHanyu is a zero-friction, ambient desktop widget designed to help you absorb 
 
 ### Installation & Launch
 
-```powershell
-# 1. Clone or navigate to the repository
-cd C:\mycode\RadHanyu
+```bash
+# 1. Clone the repository (or download and extract the ZIP)
+git clone https://github.com/your-username/RadHanyu.git
+cd RadHanyu
 
 # 2. Install dependencies (Electron)
 npm install
@@ -47,6 +48,9 @@ npm install
 # 3. Launch the widget
 npm start
 ```
+
+> **Note for Offline Distribution**: Once `npm install` has been run (or if distributed as a packaged build), RadHanyu runs **100% offline** without needing any active internet connection or external services.
+
 
 ---
 

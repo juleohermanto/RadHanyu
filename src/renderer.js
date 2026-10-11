@@ -47,7 +47,14 @@ function renderWord(word) {
     word.radicals.forEach(r => {
       const chip = document.createElement('div');
       chip.className = 'radical-chip';
-      chip.innerHTML = `<strong>${r.radical}</strong> <span>${r.meaning}</span>`;
+      
+      const strong = document.createElement('strong');
+      strong.textContent = r.radical || '';
+      const span = document.createElement('span');
+      span.textContent = ` ${r.meaning || ''}`;
+
+      chip.appendChild(strong);
+      chip.appendChild(span);
       radicalsList.appendChild(chip);
     });
   }
