@@ -39,7 +39,7 @@ RadHanyu is a zero-friction, ambient desktop widget designed to help you absorb 
 
 ```bash
 # 1. Clone the repository (or download and extract the ZIP)
-git clone https://github.com/your-username/RadHanyu.git
+git clone https://github.com/juleohermanto/RadHanyu.git
 cd RadHanyu
 
 # 2. Install dependencies (Electron)
