@@ -34,7 +34,7 @@ body {
   overflow: hidden;
   height: 100vh;
   display: flex;
-  align-items: flex-end;
+  align-items: flex-start;
 }
 
 .widget-pill {
@@ -261,6 +261,24 @@ body.theme-light .theme-switch-slider {
 .icon-btn:hover {
   color: var(--text-primary);
   background: rgba(255, 255, 255, 0.08);
+}
+
+.collapse-action {
+  font-size: 11px;
+  color: var(--text-muted);
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  opacity: 0.6;
+}
+
+.widget-pill:hover .collapse-action {
+  opacity: 1;
+}
+
+.collapse-action:hover {
+  color: var(--accent-jade) !important;
+  background: var(--accent-jade-glow) !important;
 }
 
 .close-action {

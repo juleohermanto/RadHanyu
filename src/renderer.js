@@ -68,9 +68,12 @@ function renderWord(word) {
 function toggleExpand(forceState) {
   isExpanded = forceState !== undefined ? forceState : !isExpanded;
 
+  const collapseBtn = document.getElementById('collapse-btn');
+
   if (isExpanded) {
     if (widgetContainer) widgetContainer.classList.add('widget-expanded');
     expandedView.classList.remove('hidden');
+    if (collapseBtn) collapseBtn.classList.remove('hidden');
     requestAnimationFrame(() => {
       const neededHeight = widgetContainer ? widgetContainer.scrollHeight + 12 : 280;
       if (window.electronAPI) window.electronAPI.resizeWidget(true, neededHeight);
@@ -78,6 +81,7 @@ function toggleExpand(forceState) {
   } else {
     if (widgetContainer) widgetContainer.classList.remove('widget-expanded');
     expandedView.classList.add('hidden');
+    if (collapseBtn) collapseBtn.classList.add('hidden');
     if (window.electronAPI) window.electronAPI.resizeWidget(false);
   }
 }
@@ -102,12 +106,13 @@ idleView.addEventListener('dblclick', (e) => {
   }
 });
 
-expandedView.addEventListener('click', (e) => {
-
-  if (e.target.tagName !== 'BUTTON' && !e.target.closest('button')) {
+const collapseBtn = document.getElementById('collapse-btn');
+if (collapseBtn) {
+  collapseBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
     toggleExpand(false);
-  }
-});
+  });
+}
 
 audioBtn.addEventListener('click', (e) => {
   e.stopPropagation();

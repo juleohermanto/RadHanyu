@@ -1,6 +1,6 @@
 {
   "name": "radhanyu",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Minimalist, ambient desktop widget for passive Chinese language acquisition",
   "main": "main.js",
   "scripts": {

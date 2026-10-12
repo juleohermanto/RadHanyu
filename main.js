@@ -34,12 +34,6 @@ function createWindow() {
   });
 
   mainWindow.loadFile(path.join(__dirname, 'src', 'index.html'));
-
-  mainWindow.on('blur', () => {
-    if (mainWindow && !mainWindow.isDestroyed()) {
-      mainWindow.webContents.send('auto-collapse');
-    }
-  });
 }
 
 ipcMain.on('resize-widget', (event, expanded, customHeight) => {
@@ -55,10 +49,11 @@ ipcMain.on('resize-widget', (event, expanded, customHeight) => {
 
   const [startX, startY] = mainWindow.getPosition();
   const [startW, startH] = mainWindow.getSize();
-  
 
+  // Anchor horizontally to the right edge (or keep top-left depending on positioning)
+  // And expand vertically DOWNWARDS (startY remains constant)
   const endX = startX - (targetWidth - startW);
-  const endY = startY - (targetHeight - startH);
+  const endY = startY;
 
   if (startH === targetHeight && startW === targetWidth) return;
 
@@ -82,6 +77,13 @@ ipcMain.on('close-widget', () => {
 });
 
 app.whenReady().then(() => {
+  // Ensure the widget starts automatically when laptop/PC powers on
+  app.setLoginItemSettings({
+    openAtLogin: true,
+    path: process.execPath,
+    args: []
+  });
+
   createWindow();
 
   app.on('activate', () => {
