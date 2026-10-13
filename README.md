@@ -114,8 +114,6 @@ RadHanyu/
 ├── main.js                  # Electron main process (frameless window, auto-launch, IPC)
 ├── preload.js               # Context-isolated IPC bridge
 ├── package.json             # NPM metadata and Electron dependencies (v1.1.0)
-├── task.md                  # Development task checklist and architectural specs
-└── AGENTS.md                # Agent onboarding guidelines
 ```
 
 ---
