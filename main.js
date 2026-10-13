@@ -76,20 +76,44 @@ ipcMain.on('close-widget', () => {
   if (mainWindow) mainWindow.close();
 });
 
-app.whenReady().then(() => {
-  // Ensure the widget starts automatically when laptop/PC powers on
-  app.setLoginItemSettings({
-    openAtLogin: true,
-    path: process.execPath,
-    args: []
+const gotTheLock = app.requestSingleInstanceLock();
+
+if (!gotTheLock) {
+  app.quit();
+} else {
+  app.on('second-instance', () => {
+    if (mainWindow) {
+      if (mainWindow.isMinimized()) mainWindow.restore();
+      mainWindow.focus();
+    }
   });
 
-  createWindow();
+  app.whenReady().then(() => {
+    // Clean up rogue/duplicate registry keys created during testing
+    if (process.platform === 'win32') {
+      try {
+        const { exec } = require('child_process');
+        exec('reg delete "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Run" /v "electron.app.Electron" /f');
+        exec('reg delete "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Run" /v "electron.app.radhanyu" /f');
+      } catch (e) {}
+    }
 
-  app.on('activate', () => {
-    if (BrowserWindow.getAllWindows().length === 0) createWindow();
+    // Only set auto-launch if installed as packaged app, never for raw electron binary
+    if (app.isPackaged) {
+      app.setLoginItemSettings({
+        openAtLogin: true,
+        path: process.execPath,
+        args: []
+      });
+    }
+
+    createWindow();
+
+    app.on('activate', () => {
+      if (BrowserWindow.getAllWindows().length === 0) createWindow();
+    });
   });
-});
+}
 
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') app.quit();
